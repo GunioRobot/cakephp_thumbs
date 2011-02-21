@@ -1,0 +1,17 @@
+########################################
+
+Get thumbs from shorted URL's for CakePHP
+
+Auther: kain (kain@kai-net.com)
+
+#########################################
+
+Require:
+	php 5.xx
+	cURL
+
+Install:
+	1. Copy to YOUAPP/vendors.
+	2. Make thumbs directory for store and change permission.
+	3. Change image.php to you setting.
+	4. enjoy!
