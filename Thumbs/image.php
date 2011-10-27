@@ -1,11 +1,11 @@
 <?php
 /*==================================
- * 
+ *
  * テキストから画像投稿サイトのサムネイルを取得
  * Author: Kain Ryu
  * Date: 2011.01.01
- * 
- * 
+ *
+ *
  * 対応サイト(2010.12.31時点)
  *		Twitpic.com
  *		movapic.com
@@ -75,13 +75,13 @@ class Image {
 
 	public $http_code = null;
 	public $content_type = null;
-	
+
 	public function __construct($thum_path){
 		define('THUMB_DIR', $thum_path);
 	}
-	
+
 	private function http($url){
-		
+
 		$ch = curl_init();
 		if(defined(USERAGENT)):
 			curl_setopt($ch, CURLOPT_USERAGENT, USERAGENT);
@@ -101,7 +101,7 @@ class Image {
 		curl_close($ch);
 
 		return $res;
-		
+
 	}
 
 	public function base36_decode($base36){
@@ -109,7 +109,7 @@ class Image {
 	}
 
 	public function select_service($url){
-		
+
 		preg_match('@^(?:http://)?([^/]+)@i', $url, $match);
 
 		if($match[1] == "twitpic.com")
@@ -147,7 +147,7 @@ class Image {
 	}
 
 	public function get_thumb($url, $id){
-		
+
 		$mimetype = array(
 			"image/gif" => "gif",
 			"image/jpeg" => "jpg",
@@ -278,7 +278,7 @@ class Image {
 		foreach($html->find('div[id=photoarea] div[id=img_box] img') as $element){
 			$url = $element->src;
 		}
-		
+
 		//大きい画像で表示させたい場合は、この次の行をコメントアウト
 		$url = str_replace('_m.','_s.',$url);
 
